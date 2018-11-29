@@ -24,8 +24,6 @@ class LoginVC: UIViewController {
         
         LoginService.shared.login(email: email, password: password) { (data) in
             //token 못받으면 걸러짐
-            
-            
             guard let token = data.token else {return}
             UserDefaults.standard.set(token, forKey: "token")
         

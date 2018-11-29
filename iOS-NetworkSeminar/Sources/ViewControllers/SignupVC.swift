@@ -25,12 +25,11 @@ class SignupVC: UIViewController {
         guard let email = emailText.text else {return}
         guard let password = passwordText.text else {return}
         guard let name = nameText.text else {return}
+        let part = "iOS"
         
         
-        UserService.shared.signUp(name: name, email: email, password: password, part: "IOS") {
-            print("이게 실행 되어야함")
-//            let BoardVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardVC")
-//            self.present(BoardVC!, animated: true, completion: nil)
+        UserService.shared.signUp(name: name, email: email, password: password, part: part) { (status) in
+            self.dismiss(animated: true, completion: nil)
         }
     }
 }

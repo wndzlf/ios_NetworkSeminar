@@ -17,10 +17,9 @@ struct UserService: APIManager, Requestable {
     let headers: HTTPHeaders = [
         "Content-Type" : "application/json"
     ]
-    var status: Int?
     
     //회원 가입 api
-    func signUp(name: String, email: String, password: String, part: String, completion: @escaping () -> Void) {
+    func signUp(name: String, email: String, password: String, part: String, completion: @escaping (Int?) -> Void) {
         //코드작성
         let body = [
             "name" : name,
@@ -40,6 +39,7 @@ struct UserService: APIManager, Requestable {
                 }else if value.status == 500 {
                     print("서버 내부 에러")
                 }
+                completion(value.status)
             case .error(let error):
                     print(error)
                     print("전송 실패")

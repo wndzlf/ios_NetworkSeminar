@@ -151,7 +151,7 @@
         <!--LoginVC-->
         <scene sceneID="RCe-ru-o7J">
             <objects>
-                <viewController id="sD1-3w-Fh6" customClass="LoginVC" customModule="iOS_NetworkSeminar" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sD1-3w-Fh6" customClass="LoginVC" customModule="iOS_NetworkSeminar" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1qj-6i-fBh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
