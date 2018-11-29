@@ -27,7 +27,6 @@ class SignupVC: UIViewController {
         guard let name = nameText.text else {return}
         let part = "iOS"
         
-        
         UserService.shared.signUp(name: name, email: email, password: password, part: part) { (status) in
             
             guard let stat = status else {return}

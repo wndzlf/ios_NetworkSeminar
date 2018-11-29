@@ -18,7 +18,7 @@ struct LoginService: APIManager, Requestable {
     ]
     
     //로그인 api
-    func login(email: String, password: String, completion: @escaping (Token, Int?) -> Void) {
+    func login(email: String, password: String, completion: @escaping (Token?,Int?) -> Void) {
         let body = [
             "email" : email,
             "password" : password,
@@ -33,8 +33,8 @@ struct LoginService: APIManager, Requestable {
                 }else if value.status == 500{
                     print("서버 내부 에러")
                 }
-                guard let token = value.data else {return}
-                completion(token,value.status)
+                //guard let token = value.data else {return}
+                completion(value.data,value.status)
             case .error(let error):
                 print(error)
                 print("전송 실패")
