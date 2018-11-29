@@ -29,7 +29,16 @@ class SignupVC: UIViewController {
         
         
         UserService.shared.signUp(name: name, email: email, password: password, part: part) { (status) in
-            self.dismiss(animated: true, completion: nil)
+            
+            guard let stat = status else {return}
+            if stat == 201{
+                    self.dismiss(animated: true, completion: nil)
+            } else {
+                let alterController = UIAlertController(title: "회원가입 실패", message: " ", preferredStyle: UIAlertController.Style.alert)
+                let action = UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil)
+                alterController.addAction(action)
+                self.present(alterController, animated: true, completion: nil)
+            }
         }
     }
 }
