@@ -11,20 +11,16 @@ import Alamofire
 struct BoardService: APIManager, Requestable {
     typealias NetworkData = ResponseArray<Board>
     static let shared = BoardService()
-    let boardURL = url("/contents")
+    let boardURL = url("/contents?offset=0&limit=200")
     let header: HTTPHeaders = [
         "Content-Type": "application/json"
     ]
     
-    //모든 게시글 조회 api
-    //게시글을 불러올 때 옵션에 대한 내용이 api명세서에 더 추가되어있습니다.
-    //api 명세서를 보시고 한번 시도해보세요!
     func getBoardList(completion: @escaping ([Board]) -> Void) {
         gettable(boardURL, body: nil, header: header) { (res) in
             switch res {
             case .success(let value):
-                guard let boardList = value.data else
-                {return}
+                guard let boardList = value.data else{return}
                 completion(boardList)
             case .error(let error):
                 print(error)

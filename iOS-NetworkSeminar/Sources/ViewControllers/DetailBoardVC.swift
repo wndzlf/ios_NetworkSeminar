@@ -10,10 +10,19 @@ import UIKit
 
 class DetailBoardVC: UIViewController {
 
+    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet var timeLabel: UILabel!
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var contentsText: UITextView!
+    @IBOutlet var likeLabel: UILabel!
+    @IBOutlet var likeImage: UIImageView!
+    
+    var boardList: [Board] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        
     }
     
 

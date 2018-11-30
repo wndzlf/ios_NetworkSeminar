@@ -10,6 +10,14 @@ import UIKit
 
 class BoardCell: UITableViewCell {
 
+    
+    @IBOutlet var titleLabel: UILabel!
+    @IBOutlet var contentsLabel: UILabel!
+    @IBOutlet var dataLabel: UILabel!
+    @IBOutlet var likeLabel: UILabel!
+    @IBOutlet var cellImage: UIImageView!
+    @IBOutlet var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -17,8 +25,7 @@ class BoardCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
-
+    
 }

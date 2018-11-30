@@ -41,7 +41,8 @@ class LoginVC: UIViewController {
             
             guard let token = data?.token else {return}
             UserDefaults.standard.set(token, forKey: "token")
-            let BoardVC = self.storyboard?.instantiateViewController(withIdentifier: "BoardVC")
+            
+            let BoardVC = self.storyboard?.instantiateViewController(withIdentifier: "navi")
             self.present(BoardVC!, animated: true, completion: nil)
         }
     }
