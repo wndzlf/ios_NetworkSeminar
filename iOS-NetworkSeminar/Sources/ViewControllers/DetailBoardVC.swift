@@ -17,15 +17,25 @@ class DetailBoardVC: UIViewController {
     @IBOutlet var likeLabel: UILabel!
     @IBOutlet var likeImage: UIImageView!
     
-    var boardList: [Board] = []
+    var board:Board?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        guard let userId = board?.userId else {return}
+        guard let title = board?.boardTitle else {return}
+        guard let contents = board?.boardContents else {return}
+        guard let like = board?.boardLike else {return}
+        guard let date = board?.boardDate else {return}
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/dd hh:mm"
+        let resultDate = dateFormatter.string(from: date)
+        
+        timeLabel.text = "\(resultDate.description)"
+        nameLabel.text = "\(userId)"
+        titleLabel.text = title
+        contentsText.text = contents
+        likeLabel.text = "좋아요 \(like)개"
     }
-    
-
-   
-
 }

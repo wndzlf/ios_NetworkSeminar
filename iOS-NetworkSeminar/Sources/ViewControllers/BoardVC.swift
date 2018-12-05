@@ -44,16 +44,15 @@ class BoardVC: UIViewController {
         if segue.identifier == "toDetail" {
             let naviVC = segue.destination as! UINavigationController
             let childVC = naviVC.topViewController as! DetailBoardVC
-            childVC.boardList = boardList
         }
     }
 }
 
 extension BoardVC:UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let writeBoardVC = self.storyboard?.instantiateViewController(withIdentifier: "WriteBaordVC") as! WriteBoardVC
-        
-        navigationController?.pushViewController(writeBoardVC, animated: true)
+        let detailBoardVC = self.storyboard?.instantiateViewController(withIdentifier: "DetailBoardVC") as! DetailBoardVC
+        detailBoardVC.board = boardList[indexPath.row]
+        navigationController?.pushViewController(detailBoardVC, animated: true)
     }
 }
 
@@ -65,14 +64,19 @@ extension BoardVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableVIew.dequeueReusableCell(withIdentifier: "cellId") as! BoardCell
         
-        let board = boardList[indexPath.row] as! Board
+        let board = boardList[indexPath.row]
         
         if let imageURL = board.boardPhoto {
             cell.cellImage.imageFromUrl(imageURL, defaultImgPath: "")
         }
-        if let time = board.boardDate {
-                cell.dataLabel.text = "\(time)"
+        
+        if let dateString = board.boardDate {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MM/dd hh:mm"
+            let resultDate = dateFormatter.string(from: dateString)
+            cell.dataLabel.text = "\(resultDate.description)"
         }
+        
         if let like = board.boardLike {
             cell.likeLabel.text = "\(like)"
         }
